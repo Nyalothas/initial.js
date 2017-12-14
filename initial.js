@@ -65,7 +65,7 @@
                     width: 100,
                     fontSize: .60, // 60% of height
                     fontWeight: 400,
-                    fontFamily: 'HelveticaNeue-Light,Helvetica Neue Light,Helvetica Neue,Helvetica, Arial,Lucida Grande, sans-serif',
+                    fontFamily: 'Source Sans Pro, Calibri, Candara, Arial, sans-serif',
                     radius: 0
                 }, options);
     
@@ -84,6 +84,7 @@
     
                 // making the text object
                 var c = null;
+                settings.name = settings.name.trim();
                 if (hasWords(settings.name)) {
                     c = splitName(settings.name).toUpperCase();
                 } else {
