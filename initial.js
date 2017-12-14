@@ -30,6 +30,21 @@
         return accumulator;
     };
 
+    var hasWords = function(name) {
+        var values = name.split(' ');
+        if (values.length > 1) {
+            //two or more words
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    var splitName = function(name){
+        var values = name.split(' ');
+        return values[0][0] + values[1][0];
+    }
+
     $.fn.initial = function (options) {
 
         // Defining Colors
@@ -58,7 +73,13 @@
             settings = $.extend(settings, e.data());
 
             // making the text object
-            var c = unicode_slice(settings.name, 0, settings.charCount).toUpperCase();
+            var c = null;
+            if(hasWords(settings.name)){
+                c = splitName(settings.name).toUpperCase();    
+            } else {
+                c = unicode_slice(settings.name, 0, settings.charCount).toUpperCase();
+            }
+            
             var cobj = $('<text text-anchor="middle"></text>').attr({
                 'y': '50%',
                 'x': '50%',
