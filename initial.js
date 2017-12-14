@@ -63,7 +63,7 @@
                 textColor: '#ffffff',
                 height: 100,
                 width: 100,
-                fontSize: 60,
+                fontSize: .60, // 60% of height
                 fontWeight: 400,
                 fontFamily: 'HelveticaNeue-Light,Helvetica Neue Light,Helvetica Neue,Helvetica, Arial,Lucida Grande, sans-serif',
                 radius: 0
@@ -72,6 +72,16 @@
             // overriding from data attributes
             settings = $.extend(settings, e.data());
 
+            if (settings.fontSize < 1) {
+                // if font size < 1 presume that this is a percentage of height
+                // e.g. - settings.fontSize: .45
+                settings.fontSize = parseInt(settings.height * settings.fontSize);
+            } else if (settings.fontSize.toString().indexOf("%") > 1) {
+                // if font size has % character calculate it from height
+                // e.g. - settings.fontSize: "45%"
+                settings.fontSize = parseInt(settings.height * (parseInt(settings.fontSize.replace("%", "")) / 100));
+            }
+
             // making the text object
             var c = null;
             if(hasWords(settings.name)){
@@ -79,7 +89,7 @@
             } else {
                 c = unicode_slice(settings.name, 0, settings.charCount).toUpperCase();
             }
-            
+
             var cobj = $('<text text-anchor="middle"></text>').attr({
                 'y': '50%',
                 'x': '50%',
