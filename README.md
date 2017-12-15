@@ -43,6 +43,5 @@ Usage
 | textColor   | data-text-color  | Color of the text                                              | #ffffff                                                                                            |
 | fontSize    | data-font-size   | Font size of the character(s)                                  | 60                                                                                                 |
 | fontWeight  | data-font-weight | Font weight of the character(s)                                | 400                                                                                                |
-| radius      | data-radius      | Rounded corners                                                | 0                                                                                                  |
 | seed        | data-seed        | Number to randomize the background color                       | 0                                                                                                  |
 | color        | data-color        | Background color of the profile picture that should be generated | null                                                                                               |

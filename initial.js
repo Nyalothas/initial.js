@@ -19,7 +19,7 @@
             var unicodeIndex = 0;
             var length = string.length;
     
-            while (stringIndex < length) {
+        while (stringIndex < length) {
                 character = unicode_charAt(string, stringIndex);
                 if (unicodeIndex >= start && unicodeIndex < end) {
                     accumulator += character;
@@ -30,6 +30,7 @@
             return accumulator;
         };
     
+        /*
         var hasWords = function (name) {
             var values = name.split(' ');
             if (values.length > 1) {
@@ -39,6 +40,7 @@
                 return false;
             }
         };
+        */
     
         var splitName = function (name) {
             var values = name.split(' ');
@@ -66,7 +68,6 @@
                     fontSize: .60, // 60% of height
                     fontWeight: 400,
                     fontFamily: 'Source Sans Pro, Calibri, Candara, Arial, sans-serif',
-                    radius: 0
                 }, options);
     
                 // overriding from data attributes
@@ -84,8 +85,9 @@
     
                 // making the text object
                 var c = null;
+                settings.name +='';
                 settings.name = settings.name.trim();
-                if (hasWords(settings.name)) {
+                if (settings.name.indexOf(' ') != -1) {  //there is at least one space inside
                     c = splitName(settings.name).toUpperCase();
                 } else {
                     c = unicode_slice(settings.name, 0, settings.charCount).toUpperCase();
@@ -118,9 +120,7 @@
                 }).css({
                     'background-color': finalColor,
                     'width': settings.width + 'px',
-                    'height': settings.height + 'px',
-                    'border-radius': settings.radius + 'px',
-                    '-moz-border-radius': settings.radius + 'px'
+                    'height': settings.height + 'px'
                 });
     
                 svg.append(cobj);
@@ -128,7 +128,10 @@
                 var svgHtml = window.btoa(unescape(encodeURIComponent($('<div>').append(svg.clone()).html())));
     
                 e.attr("src", 'data:image/svg+xml;base64,' + svgHtml);
-    
+                
+                // tests start here
+                e.attr("testoutput",c); return c;
+                // tests end here
             });
         };
     

@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Initials</title>
+    <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.4.1.css">
 </head>
 <body>
-    <img data-name="Lucida Grande" class="profile"/>
+    <img  class="profile"/>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script src="initial.js"></script>
+<!--
     <script> 
     $('.profile').initial(
         {
@@ -18,5 +20,11 @@
         }
     ); 
     </script> 
+-->
+
+    <div id="qunit"></div>
+
+    <script src="https://code.jquery.com/qunit/qunit-2.4.1.js"></script>
+    <script src="tests.js"></script>
 </body>
 </html>
