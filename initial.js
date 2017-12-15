@@ -9,6 +9,10 @@
                     return string.substring(index, index + 2);
                 }
             }
+            if(string[index] === undefined) 
+            {  
+                return string[0];
+            }
             return string[index];
         };
     
@@ -90,8 +94,8 @@
                 if (settings.name.indexOf(' ') != -1) {  //there is at least one space inside
                     c = splitName(settings.name).toUpperCase();
                 } else {
-                    c = unicode_slice(settings.name, 0, settings.charCount).toUpperCase();
-                }
+                    c = unicode_slice(settings.name, 0, parseInt(settings.charCount) > parseInt(settings.name.length) ? settings.charCount : 1).toUpperCase();
+            }
     
                 var cobj = $('<text text-anchor="middle"></text>').attr({
                     'y': '50%',
